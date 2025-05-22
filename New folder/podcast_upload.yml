@@ -1,1 +1,22 @@
+name: Post Podcast Upload to Discord
+on:
+  push:
+    branches:
+      - main
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get RSS Feed
+        run: |
+          # https://anchor.fm/s/b27f3ae8/podcast/rss
+          # echo "<title>New Episode!</title><description>Episode description</description>" > feed.xml
+  
+          echo "<title>New Episode!</title><description>Episode description</description>" > feed.xml
+      - name: Post to Discord
+        run: |
+          # https://discord.com/api/webhooks/1374732586462609468/dEeX89KzliH2dgbzEvC3RoGkTHVoWn-r9zOrC4KxA5iN0c1N_Np8IbBDcZyity1_Sf5g
+          # Example: curl -X POST -H "Content-type: application/json" -d '{"content": "New podcast episode uploaded: [New Episode Title]"}'  <<Discord Webhook URL>>
+          echo "curl -X POST -H \"Content-type: application/json\" -d '{\"content\": \"New podcast episode uploaded: [New Episode Title]\"}' <<Discord Webhook URL>>"
